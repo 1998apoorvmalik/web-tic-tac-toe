@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+
+    <script
+      src="https://kit.fontawesome.com/9279f8f176.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Tic Tac Toe</h1>
+
+      <div class="actions">
+        <i class="fas fa-redo fa-lg"></i>
+        <i class="fas fa-cog fa-lg"></i>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal">
+      <!-- Modal Content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h1 style="text-align: center; margin: auto">Game Settings</h1>
+
+        <hr />
+
+        <h2 class="setting-label">Choose Opponent</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Human</th>
+              <th>Random Bot</th>
+              <th>Noob Bot</th>
+              <th>Skilled Bot</th>
+              <th>Expert Bot</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <input type="radio" name="opponent" value="human" />
+              </td>
+              <td>
+                <input type="radio" name="opponent" value="random bot" />
+              </td>
+              <td>
+                <input type="radio" name="opponent" value="noob bot" />
+              </td>
+              <td>
+                <input type="radio" name="opponent" value="skilled bot" />
+              </td>
+              <td>
+                <input type="radio" name="opponent" value="expert bot" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="setting-label">Board Size</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>3x3</th>
+              <th>4x4</th>
+              <th>5x5</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>
+                <input type="radio" name="boardSize" value="3" />
+              </td>
+              <td>
+                <input type="radio" name="boardSize" value="4" />
+              </td>
+              <td>
+                <input type="radio" name="boardSize" value="5" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="setting-label">First Turn?</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>You</th>
+              <th>Bot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <td>
+              <input type="radio" name="turn" value="you" />
+            </td>
+            <td>
+              <input type="radio" name="turn" value="bot" />
+            </td>
+          </tbody>
+        </table>
+
+        <Button id="play">Play</Button>
+      </div>
+    </div>
+
+    <div class="board" style="--size: 3">
+    </div>
+
+    <div class="footer">
+      <h1>X: 0</h1>
+      <div class="horizontal-space"></div>
+      <h1>O: 0</h1>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
