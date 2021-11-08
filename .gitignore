@@ -1,2 +1,5 @@
 # Macintosh garbage
 .DS_Store
+
+# vscode
+.vscode/
