@@ -46,55 +46,59 @@ class Controller {
     // sort player places
     places.sort((a, b) => a - b);
 
-    for (var i = 0; i < places.length; i++) {
-      if (places[i] % this.boardSize == 0) {
-        // check rows
-        var count = 0;
-        for (var j = i; j < this.boardSize; j++) {
-          if (places[j] - places[i] !== j - i) {
-            break;
-          }
-          count++;
-        }
-        if (count === this.boardSize) {
-          return true;
-        }
-      }
-
-      if (places[i] < this.boardSize) {
-        // check columns
-        var countLeftDiagonal, countRightDiagonal, countColumn;
-        countLeftDiagonal = countRightDiagonal = countColumn = 0;
-        for (var j = i; j < places.length; j++) {
-          if ((places[j] - places[i]) % this.boardSize === 0) {
-            countColumn++;
-          }
-
-          if (
-            places[i] === 0 &&
-            (places[j] - places[i]) % (this.boardSize + 1) === 0
-          ) {
-            countLeftDiagonal++;
-          }
-
-          if (
-            places[i] === this.boardSize - 1 &&
-            (places[j] - places[i]) % (this.boardSize - 1) === 0
-          ) {
-            countRightDiagonal++;
-          }
-        }
+    for (let i = 0; i < places.length; i++) {
+      var countRow, countColumn, countLeftDiagonal, countRightDiagonal;
+      countRow = countColumn = countLeftDiagonal = countRightDiagonal = 0;
+      for (var j = i; j < places.length; j++) {
         if (
-          Math.max(countLeftDiagonal, countRightDiagonal, countColumn) ===
-          this.boardSize
+          places[i] % this.boardSize === 0 &&
+          places[j] - places[i] === j - i
         ) {
-          console.log(countLeftDiagonal, countRightDiagonal, countColumn);
+          countRow++;
+        }
+
+        if (
+          places[i] < this.boardSize &&
+          (places[j] - places[i]) % this.boardSize === 0
+        ) {
+          countColumn++;
+        }
+
+        if (
+          places[i] === 0 &&
+          (places[j] - places[i]) % (this.boardSize + 1) === 0
+        ) {
+          countLeftDiagonal++;
+        }
+
+        if (
+          places[i] === this.boardSize - 1 &&
+          places[j] - places[i] <= this.boardSize + 1 &&
+          (places[j] - places[i]) % (this.boardSize - 1) === 0
+        ) {
+          countRightDiagonal++;
+        }
+
+        if (
+          Math.max(
+            countRow,
+            countColumn,
+            countLeftDiagonal,
+            countRightDiagonal
+          ) === this.boardSize
+        ) {
+          console.log(
+            countRow,
+            countColumn,
+            countLeftDiagonal,
+            countRightDiagonal
+          );
           return true;
         }
       }
-
-      return false;
     }
+
+    return false;
   }
 }
 
