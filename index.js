@@ -17,7 +17,6 @@ class Controller {
         this.oPlaces.push(index);
         this.currentTurn = "x";
       }
-
       return this.checkStatus();
     }
   }
@@ -87,17 +86,10 @@ class Controller {
             countRightDiagonal
           ) === this.boardSize
         ) {
-          console.log(
-            countRow,
-            countColumn,
-            countLeftDiagonal,
-            countRightDiagonal
-          );
           return true;
         }
       }
     }
-
     return false;
   }
 }
@@ -122,6 +114,10 @@ var boardSize = 3;
 
 // Opponent global variable (Default: Noob bot)
 var opponent = "noob bot";
+
+// scores
+var xWins, oWins;
+xWins = oWins = 0;
 
 // Set game opponent setting
 document.getElementsByName("opponent").forEach((element) => {
@@ -151,9 +147,8 @@ document.getElementById("play").addEventListener("click", () => {
   console.log(
     `[INFO] Starting game with ${opponent} on ${boardSize}x${boardSize} board.`
   );
-
   settingsModal.style.display = "none";
-
+  // reset game
   reset();
 });
 
@@ -177,6 +172,9 @@ function reset() {
   </div>`;
   }
 
+  // reset game status
+  document.querySelector(".game-status").innerHTML = "";
+
   document.querySelectorAll(".cell").forEach((element, num) => {
     element.innerHTML = "";
     element.addEventListener("click", () => {
@@ -184,7 +182,15 @@ function reset() {
         element.innerHTML = `<i class="${
           gameController.currentTurn == "x" ? "fas fa-times" : "far fa-circle"
         }"></i>`;
-        console.log(gameController.nextMove(num));
+        document.querySelector(".game-status").innerHTML = `<h2>${gameController
+          .nextMove(num)
+          .toUpperCase()}</h2>`;
+      }
+
+      if (gameController.isGameOver) {
+        gameController.currentTurn == "o" ? xWins++ : oWins++;
+        document.querySelectorAll("#score")[0].innerHTML = `<h2>${xWins}</h2>`;
+        document.querySelectorAll("#score")[1].innerHTML = `<h2>${oWins}</h2>`;
       }
     });
   });

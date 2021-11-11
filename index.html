@@ -111,17 +111,29 @@
           </tbody>
         </table>
 
-        <Button id="play">Play</Button>
+        <button id="play">Play</button>
       </div>
     </div>
 
-    <div class="board" style="--size: 3">
-    </div>
+    <div class="game-status"></div>
+
+    <div class="board" style="--size: 3"></div>
 
     <div class="footer">
-      <h1>X: 0</h1>
-      <div class="horizontal-space"></div>
-      <h1>O: 0</h1>
+      <h2>Wins</h2>
+      <div class="footer-content">
+        <table>
+          <tr>
+            <th><h2>X</h2></th>
+            <th><h2>O</h2></th>
+          </tr>
+
+          <tr>
+            <td id="score"><h2>0</h2></td>
+            <td id="score"><h2>0</h2></td>
+          </tr>
+        </table>
+      </div>
     </div>
 
     <script src="index.js"></script>

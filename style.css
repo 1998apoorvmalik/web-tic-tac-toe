@@ -1,11 +1,18 @@
 :root {
   --size: 3;
   --cell-margin: 5px;
-  --board-size: 30vw;
+  --board-size: 80vw;
   --background-color: #010402;
   --accent-color: #d175b7;
   --primary-color: #4bc3b5;
   --secondary-color: #1c2c54;
+}
+
+@media screen and (min-width: 600px) {
+  :root {
+    /* mobile size */
+    --board-size: 30vw;
+  }
 }
 
 body {
@@ -46,7 +53,8 @@ button {
 }
 
 table {
-  margin: auto;
+  margin: 0 auto;
+  border-collapse: collapse;
 }
 
 th,
@@ -69,6 +77,11 @@ td {
   bottom: 40%;
   padding-right: 16px;
   right: 0;
+}
+
+.game-status {
+  margin: 5vh auto;
+  text-align: center;
 }
 
 .board {
@@ -146,10 +159,24 @@ td {
   position: fixed;
   left: 0;
   bottom: 0;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
   width: 100%;
+}
+
+.footer-content {
+  display: flex;
+  position: fixed;
+  margin-top: 32px;
   color: var(--primary-color);
   text-align: center;
+}
+
+.footer h2 {
+  margin: 0;
+}
+
+#score {
+  color: var(--accent-color);
 }
 
 #placeholder {
